@@ -1,0 +1,2 @@
+每个配置项的配置地址
+https://docs.microsoft.com/zh-cn/windows/terminal/customize-settings/global-settings
