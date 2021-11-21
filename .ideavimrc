@@ -1,0 +1,56 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set exchange
+" set easymotion
+set textobj-entire
+set ReplaceWithRegister
+set highlightedyank
+set vim-paragraph-motion
+set matchit
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+let g:highlightedyank_highlight_duration = "350"
+
+""" Common settings -------------------------
+set nohlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmode
+set scrolloff=3
+set guicursor=a:blinkon0
+set surround
+set argtextobj
+set commentary
+set sneak
+set clipboard+=unnamed
+
+""" Idea specific settings ------------------
+set ideamarks
+set ideajoin
+" set ideastatusicon=gray
+set idearefactormode=keep
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+nnoremap H ^
+nnoremap L $
+nnoremap J 5<Down>
+nnoremap K 5<up>
+vnoremap H ^
+vnoremap L $
+vnoremap J 5<Down>
+vnoremap K 5<up>
+
+nnoremap <leader>sc :nohlsearch<CR>
+nnoremap <leader>fs :w<CR>
