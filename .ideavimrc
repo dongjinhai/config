@@ -2,8 +2,11 @@
 let mapleader=' '
 
 """ Common settings -------------------------
+" 在搜索时实时高亮搜索结果, 可以提交搜索的准确性
 set incsearch
+" 将搜索结果高亮
 set hlsearch
+" normal模式下按下esc后取消高亮
 nnoremap <Esc> :nohlsearch<CR>
 
 set ignorecase
@@ -28,7 +31,6 @@ let &t_EI = "\<Esc>[2 q" . "\<Esc>]12;green\x7"
 set matchit  " 使用%来匹配跳转
 
 """ Plugins and Plugin settings -------------------------
-Plug 'preservim/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -42,6 +44,15 @@ Plug 'kana/vim-textobj-entire'
 Plug 'dbakker/vim-paragraph-motion'
 
 
+""" 配置file explore操作
+Plug 'preservim/nerdtree'
+" 将光标定位到file explore中
+nmap <C-w>h :NERDTree<CR>
+" 打开文件并将光标定位到打开的文件中或者打开/关闭文件夹
+let g:NERDTreeMapActivateNode = 'l'
+let g:NERDTreeMapCloseDir = 'h'
+
+
 """ Idea specific settings ------------------
 set ideamarks
 set ideajoin
@@ -50,8 +61,10 @@ set idearefactormode=keep
 
 map Q gq
 
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
+" Popup navigation
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
 nnoremap H ^
 nnoremap L $
 nnoremap J 5<Down>
@@ -67,10 +80,8 @@ map <leader>j :join<CR>
 xmap <leader>t <Action>($EditorTranslateAction)<Esc>
 nmap <leader>T <Action>($ShowTranslationDialogAction)
 nmap <leader>t viw<Action>($EditorTranslateAction)
-
-""" Sethandler 解决冲突 ------------------------
-" sethandler <C-h> a:ide
-" sethandler <C-j> a:vim i:ide
-" sethandler <C-k> a:vim i:ide
-" sethandler <C-l> a:ide
-" sethandler <C-S-V> a:vim
+" Tab navigation
+nnoremap <A-n> :tabnext<CR>
+nnoremap <A-p> :tabprev<CR>
+" Refactoring
+map <leader>rn <Action>(RenameElement)
